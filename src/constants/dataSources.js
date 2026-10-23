@@ -1,9 +1,12 @@
 // ── API Endpoints ────────────────────────────────────
+// Base path of the deployment (e.g. '/godseye/' on GitHub Pages, '/' elsewhere).
+const BASE = import.meta.env?.BASE_URL || '/';
+
 export const API_URLS = {
-    INTEL_WIRE_MANIFEST: '/manifests/intel-wire.json',
-    VERIFIED_CCTV_MANIFEST: '/manifests/cctv-verified.json',
-    SATELLITE_ACTIVE_MANIFEST: '/manifests/satellite-active.json',
-    MARITIME_PORTS_MANIFEST: '/manifests/maritime-ports.json',
+    INTEL_WIRE_MANIFEST: `${BASE}manifests/intel-wire.json`,
+    VERIFIED_CCTV_MANIFEST: `${BASE}manifests/cctv-verified.json`,
+    SATELLITE_ACTIVE_MANIFEST: `${BASE}manifests/satellite-active.json`,
+    MARITIME_PORTS_MANIFEST: `${BASE}manifests/maritime-ports.json`,
     // OpenSky Network - anonymous access, no API key needed
     // CORS: Browser requests are blocked; this stays as a last-resort source.
     OPENSKY: 'https://opensky-network.org/api/states/all',
@@ -109,7 +112,7 @@ export const API_URLS = {
         'https://services.arcgis.com/xOi1kZaI0eWDREZv/arcgis/rest/services/NTAD_Military_Bases/FeatureServer/0/query?where=1%3D1&outFields=OBJECTID,countryName,featureName,siteName,siteOperationalStatus,siteReportingComponent,stateNameCode&f=geojson&resultRecordCount=2000&outSR=4326&maxAllowableOffset=0.01',
     // Global supplemental military site snapshot generated from OpenStreetMap Overpass.
     // Served locally to keep CORS and Overpass rate limits out of the runtime path.
-    MILITARY_BASES_OSM_SNAPSHOT: '/data/osmMilitarySites.json',
+    MILITARY_BASES_OSM_SNAPSHOT: `${BASE}data/osmMilitarySites.json`,
     OSM_OVERPASS: 'https://overpass-api.de/api/interpreter',
     CAMERA_CALTRANS_CATALOG: 'https://cwwp2.dot.ca.gov/vm/js/cctv08.js',
     CAMERA_ONTARIO_511: 'https://511on.ca/api/v2/get/cameras',
